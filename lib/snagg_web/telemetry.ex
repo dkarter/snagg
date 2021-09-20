@@ -1,4 +1,9 @@
 defmodule SnaggWeb.Telemetry do
+  @moduledoc """
+  Sets up the Telemetry supervision tree and specifies the telemetry metrics to
+  be tracked
+  """
+
   use Supervisor
   import Telemetry.Metrics
 
