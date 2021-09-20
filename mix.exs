@@ -4,6 +4,7 @@ defmodule Snagg.MixProject do
   def project do
     [
       app: :snagg,
+      dialyzer: dialyzer(),
       version: "0.1.0",
       elixir: "~> 1.12",
       elixirc_paths: elixirc_paths(Mix.env()),
@@ -33,7 +34,7 @@ defmodule Snagg.MixProject do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
-      {:credo, "~> 1.5", only: :dev, runtime: false},
+      {:credo, "~> 1.5", only: [:dev, :test], runtime: false},
       {:dialyxir, "~> 1.1", only: [:dev, :test], runtime: false},
       {:ecto_sql, "~> 3.6"},
       {:esbuild, "~> 0.2", runtime: Mix.env() == :dev},
@@ -51,6 +52,15 @@ defmodule Snagg.MixProject do
       {:swoosh, "~> 1.3"},
       {:telemetry_metrics, "~> 0.6"},
       {:telemetry_poller, "~> 1.0"}
+    ]
+  end
+
+  defp dialyzer do
+    [
+      plt_core_path: "priv/plts",
+      plt_file: {:no_warn, "priv/plts/dialyzer.plt"},
+      ignore_warnings: ".dialyzer_ignore.exs",
+      plt_add_apps: [:mix]
     ]
   end
 

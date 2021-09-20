@@ -31,3 +31,6 @@ npm-debug.log
 
 # logfile
 logfile
+
+# ignore dialyzer plts
+/priv/plts/
