@@ -24,7 +24,9 @@ config :snagg, SnaggWeb.Endpoint,
 
 config :ueberauth, Ueberauth,
   providers: [
-    google: {Ueberauth.Strategy.Google, [hd: "blvd.co", default_scope: "email profile"]}
+    google:
+      {Ueberauth.Strategy.Google,
+       [hd: System.get_env("AUTHORIZED_DOMAINS", "example.com"), default_scope: "email profile"]}
   ]
 
 config :ueberauth, Ueberauth.Strategy.Google.OAuth,
