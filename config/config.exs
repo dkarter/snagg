@@ -8,7 +8,11 @@
 import Config
 
 config :snagg,
-  ecto_repos: [Snagg.Repo]
+  ecto_repos: [Snagg.Repo],
+  generators: [binary_id: true]
+
+# use UUIDs for database primary keys
+config :snagg, Snagg.Repo, migration_primary_key: [name: :id, type: :binary_id]
 
 # Configures the endpoint
 config :snagg, SnaggWeb.Endpoint,
