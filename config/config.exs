@@ -18,6 +18,15 @@ config :snagg, SnaggWeb.Endpoint,
   pubsub_server: Snagg.PubSub,
   live_view: [signing_salt: "7QAaRRfm"]
 
+config :ueberauth, Ueberauth,
+  providers: [
+    google: {Ueberauth.Strategy.Google, [hd: "blvd.co", default_scope: "email profile"]}
+  ]
+
+config :ueberauth, Ueberauth.Strategy.Google.OAuth,
+  client_id: {System, :get_env, ["GOOGLE_CLIENT_ID"]},
+  client_secret: {System, :get_env, ["GOOGLE_CLIENT_SECRET"]}
+
 # Configures the mailer
 #
 # By default it uses the "Local" adapter which stores the emails
