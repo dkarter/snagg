@@ -25,6 +25,7 @@ defmodule SnaggWeb.ConnCase do
       import SnaggWeb.ConnCase
 
       alias SnaggWeb.Router.Helpers, as: Routes
+      alias Snagg.Fixtures
 
       # The default endpoint for testing
       @endpoint SnaggWeb.Endpoint
