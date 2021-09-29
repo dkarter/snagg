@@ -18,8 +18,8 @@ defmodule Snagg.DataCase do
 
   using do
     quote do
-      alias Snagg.Repo
       alias Snagg.Fixtures
+      alias Snagg.Repo
 
       import Ecto
       import Ecto.Changeset

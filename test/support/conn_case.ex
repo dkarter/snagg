@@ -24,8 +24,8 @@ defmodule SnaggWeb.ConnCase do
       import Phoenix.ConnTest
       import SnaggWeb.ConnCase
 
-      alias SnaggWeb.Router.Helpers, as: Routes
       alias Snagg.Fixtures
+      alias SnaggWeb.Router.Helpers, as: Routes
 
       # The default endpoint for testing
       @endpoint SnaggWeb.Endpoint

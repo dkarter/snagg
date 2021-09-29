@@ -1,4 +1,6 @@
 defmodule Snagg.Fixtures.Auth do
+  @moduledoc false
+
   @avatar_url "https://placehold.co/600x400"
   @email "test@example.com"
   @first_name "Jay"
