@@ -14,10 +14,19 @@ defmodule SnaggWeb.Router do
     plug :accepts, ["json"]
   end
 
+  scope "/auth", SnaggWeb do
+    pipe_through :browser
+
+    get "/:provider/callback", AuthController, :callback
+    post "/:provider/callback", AuthController, :callback
+    delete "/logout", AuthController, :delete
+  end
+
   scope "/", SnaggWeb do
     pipe_through :browser
 
     get "/", PageController, :index
+    live "/home", HomeLive
   end
 
   # Other scopes may use custom stacks.

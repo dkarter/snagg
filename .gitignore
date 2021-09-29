@@ -34,3 +34,6 @@ logfile
 
 # ignore dialyzer plts
 /priv/plts/
+
+# direnv environment variables
+.envrc

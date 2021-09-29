@@ -8,7 +8,11 @@
 import Config
 
 config :snagg,
-  ecto_repos: [Snagg.Repo]
+  ecto_repos: [Snagg.Repo],
+  generators: [binary_id: true]
+
+# use UUIDs for database primary keys
+config :snagg, Snagg.Repo, migration_primary_key: [name: :id, type: :binary_id]
 
 # Configures the endpoint
 config :snagg, SnaggWeb.Endpoint,
@@ -17,6 +21,17 @@ config :snagg, SnaggWeb.Endpoint,
   render_errors: [view: SnaggWeb.ErrorView, accepts: ~w(html json), layout: false],
   pubsub_server: Snagg.PubSub,
   live_view: [signing_salt: "7QAaRRfm"]
+
+config :ueberauth, Ueberauth,
+  providers: [
+    google:
+      {Ueberauth.Strategy.Google,
+       [hd: System.get_env("AUTHORIZED_DOMAINS", "example.com"), default_scope: "email profile"]}
+  ]
+
+config :ueberauth, Ueberauth.Strategy.Google.OAuth,
+  client_id: {System, :get_env, ["GOOGLE_CLIENT_ID"]},
+  client_secret: {System, :get_env, ["GOOGLE_CLIENT_SECRET"]}
 
 # Configures the mailer
 #
