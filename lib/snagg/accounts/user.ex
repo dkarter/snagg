@@ -3,15 +3,16 @@ defmodule Snagg.Accounts.User do
 
   use Ecto.Schema
 
+  import Ecto.Changeset
+
   @type t :: %__MODULE__{
+          id: binary(),
           email: binary(),
           first_name: binary(),
           last_name: binary(),
           avatar_url: binary() | nil,
           oauth_data: map() | nil
         }
-
-  import Ecto.Changeset
 
   @derive {Jason.Encoder, only: [:email, :first_name, :last_name, :avatar_url]}
 
@@ -32,6 +33,7 @@ defmodule Snagg.Accounts.User do
     timestamps()
   end
 
+  @spec changeset(t(), map()) :: Ecto.Changeset.t()
   def changeset(%__MODULE__{} = user, params) do
     user
     |> cast(params, @permitted_params)
